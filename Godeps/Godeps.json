@@ -1,0 +1,26 @@
+{
+	"ImportPath": "bitbucket.org/rdbowden/gotrail",
+	"GoVersion": "go1.4",
+	"Deps": [
+		{
+			"ImportPath": "github.com/golang/glog",
+			"Rev": "44145f04b68cf362d9c4df2182967c2275eaefed"
+		},
+		{
+			"ImportPath": "github.com/mitchellh/goamz/aws",
+			"Rev": "703cfb45985762869e465f37ed030ff01615ff1e"
+		},
+		{
+			"ImportPath": "github.com/mitchellh/goamz/s3",
+			"Rev": "703cfb45985762869e465f37ed030ff01615ff1e"
+		},
+		{
+			"ImportPath": "github.com/vaughan0/go-ini",
+			"Rev": "a98ad7ee00ec53921f08832bc06ecf7fd600e6a1"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2",
+			"Rev": "e2e914857713db7497cca2bd7fc0b030fc9cb22d"
+		}
+	]
+}
