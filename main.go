@@ -331,22 +331,18 @@ func main() {
 
 	var region aws.Region
 	if *awsRegion != "" {
-		region = aws.Regions[*awsRegion]
+		region, err = aws.GetRegion(*awsRegion)
 	} else {
-		region = aws.EUWest
+		region, err = aws.GetRegion("")
 	}
 
 	if err != nil {
-		glog.Fatal(err)
+		panic(err)
 	}
 
 	client := s3.New(auth, region)
 
 	s3Resp := client.Bucket(*cloudtrailBucket)
-
-	if err != nil {
-		glog.Fatal(err)
-	}
 
 	logFiles, err := s3Resp.GetBucketContents()
 

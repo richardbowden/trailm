@@ -1,5 +1,5 @@
 {
-	"ImportPath": "bitbucket.org/rdbowden/gotrail",
+	"ImportPath": "github.com/richardbowden/trailm",
 	"GoVersion": "go1.4",
 	"Deps": [
 		{
@@ -8,11 +8,11 @@
 		},
 		{
 			"ImportPath": "github.com/mitchellh/goamz/aws",
-			"Rev": "703cfb45985762869e465f37ed030ff01615ff1e"
+			"Rev": "4fd24fcba4f53d9df5dc39fac8a6bcce42ad2df5"
 		},
 		{
 			"ImportPath": "github.com/mitchellh/goamz/s3",
-			"Rev": "703cfb45985762869e465f37ed030ff01615ff1e"
+			"Rev": "4fd24fcba4f53d9df5dc39fac8a6bcce42ad2df5"
 		},
 		{
 			"ImportPath": "github.com/vaughan0/go-ini",
