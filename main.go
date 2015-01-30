@@ -307,6 +307,10 @@ func main() {
 	var awsSecretAccessKey = flag.String("aws_secret_access_key", "", "AWS Secret Access Key API Key, if not set, will check ENV, then IAM Role if available")
 	flag.Parse()
 
+	if *cloudtrailBucket == "" {
+		glog.Fatal("Please specifiy a s3 bucket where the Cloudtrail logs are located. -ctbucket bucketname")
+	}
+
 	glog.Infof("Cloudtrail bucket: %v", *cloudtrailBucket)
 	glog.Infof("Mongo(s) address(es): %v", *mongodbAddr)
 	glog.Info("connecting to Mongo...")
@@ -315,7 +319,7 @@ func main() {
 	mgoMasterSession, err := mgo.DialWithTimeout(*mongodbAddr, timeOut)
 
 	if err != nil {
-		glog.Fatal(err)
+		glog.Fatalf("Unable to connect to mongo @ %v", *mongodbAddr)
 	}
 
 	glog.Infof("connected to Mongo: %v", *mongodbAddr)
@@ -337,7 +341,7 @@ func main() {
 	}
 
 	if err != nil {
-		panic(err)
+		glog.Fatalf("%v - either use -aws_region or set AWS_REGION ENV VAR, on EC2, region will be detected via the metadata service", err)
 	}
 
 	client := s3.New(auth, region)
@@ -347,7 +351,7 @@ func main() {
 	logFiles, err := s3Resp.GetBucketContents()
 
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("s3: %v", err)
 		os.Exit(-1)
 	}
 
